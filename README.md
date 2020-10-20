@@ -14,13 +14,34 @@ try to find a good solution to this, (probably with GRASP)
 5. Implement observerpattern
 6. Update class diagram to reflect new changes
 
-**Grasp patterns:**
-Creator - Where should the object be created
-Information Expert - Who has the information of the operation
-Controller - What class should handle system events
-Low Coupling
-High Cohesion
-Indirection
-Polymorphism
-Protected Variations
-Pure Fabrication
+### Observer pattern
+
+Use the observer pattern to tell the view to render when an action has been made (like stand, hit etc.)
+
+Lecture about observer pattern:  
+[Lecture L05 13:37](https://youtu.be/EJ6bNe4rSho?t=817)
+
+### Grasp patterns
+
+**Creator** - Where should the object be created
+
+**Information** Expert - Who has the information of the operation
+
+**Controller** - What class should handle system events  
+
+**Low Coupling** - What design should we favour if we want low change impact and reuse? (Pick your battles here...)
+
+**High Cohesion** - How to make classes easy to understand, focused and maintainable.  
+Solution: Assign responsibilty so that a classis responsible for one thing only
+
+**Indirection** - How can direct coupling between classes be avoided?  
+Assign reponsibility to an intermediate class, to mediate between the others. Often a pure fabrication.
+
+**Polymorphism** - What should you do if you have behavioyr that varies based on type?  
+Solution: Assign responsibility to polymorphic operations and avoid extra states, type informaton and reflection
+
+**Protected Variations** - How can we desion so that variation/change in pats of the system do not impact other parts.  
+Solution: Identify the points of variation/instability, Encapsulate the points in an "interface". (Pick your battles)
+
+**Pure Fabrication** - What if the domain or other patters offers no good solution??  
+Solution: Make something up that offers the design you want. Then the software can do what we want.
