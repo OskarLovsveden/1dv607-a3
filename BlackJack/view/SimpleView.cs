@@ -1,23 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BlackJack.view
 {
     class SimpleView : IView
     {
+        private const char _playChar = 'p';
+        private const char _hitChar = 'h';
+        private const char _standChar = 's';
+        private const char _quitChar = 'q';
 
         public void DisplayWelcomeMessage()
         {
             System.Console.Clear();
             System.Console.WriteLine("Hello Black Jack World");
-            System.Console.WriteLine("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
+            System.Console.WriteLine("Type '{0}' to Play, '{1}' to Hit, '{2}' to Stand or '{3}' to Quit\n", _playChar, _hitChar, _standChar, _quitChar);
         }
 
-        public int GetInput()
+        public Input GetInput()
         {
-            return System.Console.In.Read();
+            char c = System.Console.ReadKey(true).KeyChar;
+
+            switch (c)
+            {
+                case _playChar:
+                    return Input.Play;
+                case _hitChar:
+                    return Input.Hit;
+                case _standChar:
+                    return Input.Stand;
+                case _quitChar:
+                    return Input.Quit;
+                default:
+                    return Input.Default;
+            }
         }
 
         public void DisplayCard(model.Card a_card)
@@ -57,7 +73,7 @@ namespace BlackJack.view
             {
                 System.Console.WriteLine("You Won!");
             }
-            
+
         }
     }
 }

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BlackJack.controller
+﻿namespace BlackJack.controller
 {
     class PlayGame
     {
         public bool Play(model.Game a_game, view.IView a_view)
         {
             a_view.DisplayWelcomeMessage();
-            
+
             a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
 
@@ -19,22 +14,24 @@ namespace BlackJack.controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
-            int input = a_view.GetInput();
+            Input input = a_view.GetInput();
 
-            if (input == 'p')
+            switch (input)
             {
-                a_game.NewGame();
-            }
-            else if (input == 'h')
-            {
-                a_game.Hit();
-            }
-            else if (input == 's')
-            {
-                a_game.Stand();
+                case Input.Play:
+                    a_game.NewGame();
+                    break;
+                case Input.Hit:
+                    a_game.Hit();
+                    break;
+                case Input.Stand:
+                    a_game.Stand();
+                    break;
+                case Input.Quit:
+                    return false;
             }
 
-            return input != 'q';
+            return true;
         }
     }
 }

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BlackJack.view
 {
     interface IView
     {
         void DisplayWelcomeMessage();
-        int GetInput();
+        Input GetInput();
         void DisplayCard(model.Card a_card);
         void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score);
         void DisplayDealerHand(IEnumerable<model.Card> a_hand, int a_score);
