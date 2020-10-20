@@ -14,10 +14,13 @@ try to find a good solution to this, (probably with GRASP)
 5. Implement observerpattern
 6. Update class diagram to reflect new changes
 
-Below is readme content from the assignment on GitHub:
-
-## blackjack_csharp
-
-Fork this code to work with C# in workshop 3.
-
-Contains cs files and project files for Visual Studio 10. Also a modeling project is included, but this project will not load in certain versions of Visual Studio.
+**Grasp patterns:**
+Creator - Where should the object be created
+Information Expert - Who has the information of the operation
+Controller - What class should handle system events
+Low Coupling
+High Cohesion
+Indirection
+Polymorphism
+Protected Variations
+Pure Fabrication
