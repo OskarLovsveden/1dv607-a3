@@ -3,13 +3,24 @@ using System.Linq;
 
 namespace BlackJack.model
 {
-    class Player
+    class Player : EventHandler
     {
         private List<Card> m_hand = new List<Card>();
+
+        private string m_name;
+
+        public string Name { get => m_name; }
+
+        public Player(string name = "Player")
+        {
+            m_name = name;
+        }
 
         public void ReceiveCard(Card a_card)
         {
             m_hand.Add(a_card);
+
+            NotifySubscribers();
         }
 
         public IEnumerable<Card> GetHand()

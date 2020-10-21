@@ -1,4 +1,5 @@
 ﻿
+
 namespace BlackJack.model
 {
     class Dealer : Player
@@ -10,7 +11,8 @@ namespace BlackJack.model
         private rules.IHitStrategy m_hitRule;
         private rules.IWinConditionStrategy m_winConditionRule;
 
-        public Dealer(rules.RulesFactory a_rulesFactory)
+        public Dealer(rules.RulesFactory a_rulesFactory, string name = "Dealer")
+            : base(name)
         {
             m_newGameRule = a_rulesFactory.GetNewGameRule();
             m_hitRule = a_rulesFactory.GetHitRule();

@@ -1,32 +1,50 @@
 ﻿
+using System.Collections.Generic;
+using BlackJack.model;
+
 namespace BlackJack.controller
 {
-    class PlayGame
+    class PlayGame : model.IObserver
     {
-        public bool Play(model.Game a_game, view.IView a_view)
+        private view.IView m_view;
+        private model.Game m_game;
+
+        public PlayGame(view.IView a_view, model.Game a_game)
         {
-            a_view.DisplayWelcomeMessage();
+            m_view = a_view;
+            m_game = a_game;
+        }
+        public void CardReceived()
+        {
+            m_view.DisplayWelcomeMessage();
+            m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+            m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
+            System.Threading.Thread.Sleep(500);
+        }
 
-            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+        public bool Play()
+        {
+            m_game.AddSubscribers(this);
+            m_view.DisplayWelcomeMessage();
+            m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+            m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
 
-            if (a_game.IsGameOver())
+            if (m_game.IsGameOver())
             {
-                a_view.DisplayGameOver(a_game.IsDealerWinner());
+                m_view.DisplayGameOver(m_game.IsDealerWinner());
             }
-
-            Input input = a_view.GetInput();
+            Input input = m_view.GetInput();
 
             switch (input)
             {
                 case Input.Play:
-                    a_game.NewGame();
+                    m_game.NewGame();
                     break;
                 case Input.Hit:
-                    a_game.Hit();
+                    m_game.Hit();
                     break;
                 case Input.Stand:
-                    a_game.Stand();
+                    m_game.Stand();
                     break;
                 case Input.Quit:
                     return false;

@@ -1,3 +1,4 @@
+
 namespace BlackJack.model.rules
 {
     interface IWinConditionStrategy
