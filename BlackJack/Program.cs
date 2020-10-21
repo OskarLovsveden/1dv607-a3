@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace BlackJack
 {
     class Program
@@ -13,7 +9,7 @@ namespace BlackJack
             view.IView v = new view.SimpleView(); // new view.SwedishView();
             controller.PlayGame ctrl = new controller.PlayGame();
 
-            while (ctrl.Play(g, v));
+            while (ctrl.Play(g, v)) ;
         }
     }
 }

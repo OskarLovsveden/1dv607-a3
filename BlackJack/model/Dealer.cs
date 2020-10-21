@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace BlackJack.model
 {
     class Dealer : Player
@@ -37,14 +33,19 @@ namespace BlackJack.model
         {
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver())
             {
-                Card c;
-                c = m_deck.GetCard();
-                c.Show(true);
-                a_player.DealCard(c);
+                DealCard(a_player, true);
 
                 return true;
             }
             return false;
+        }
+
+        public void DealCard(Player a_player, bool shouldShow)
+        {
+            Card c;
+            c = m_deck.GetCard();
+            c.Show(shouldShow);
+            a_player.ReceiveCard(c);
         }
 
         public bool Stand()
@@ -52,17 +53,10 @@ namespace BlackJack.model
             if (m_deck != null)
             {
                 ShowHand();
-                foreach (Card c in GetHand())
-                {
-                    c.Show(true);
-                }
 
                 while (m_hitRule.DoHit(this))
                 {
-                    Card c;
-                    c = m_deck.GetCard();
-                    c.Show(true);
-                    DealCard(c);
+                    DealCard(this, true);
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿namespace BlackJack.model.rules
+﻿
+namespace BlackJack.model.rules
 {
     class BasicHitStrategy : IHitStrategy
     {

@@ -1,4 +1,5 @@
-﻿namespace BlackJack.controller
+﻿
+namespace BlackJack.controller
 {
     class PlayGame
     {
