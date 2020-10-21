@@ -13,18 +13,19 @@ namespace BlackJack.controller
         {
             m_view = a_view;
             m_game = a_game;
+            m_game.AddSubscribers(this);
         }
         public void CardReceived()
         {
+
             m_view.DisplayWelcomeMessage();
             m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
             m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public bool Play()
         {
-            m_game.AddSubscribers(this);
             m_view.DisplayWelcomeMessage();
             m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
             m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
