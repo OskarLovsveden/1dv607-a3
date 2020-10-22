@@ -10,7 +10,6 @@ namespace BlackJack.model
         public void ReceiveCard(Card a_card)
         {
             m_hand.Add(a_card);
-
             NotifySubscribers();
         }
 

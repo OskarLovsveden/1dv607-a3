@@ -1,7 +1,4 @@
 ﻿
-using System.Collections.Generic;
-using BlackJack.model;
-
 namespace BlackJack.controller
 {
     class PlayGame : model.IObserver
@@ -17,7 +14,6 @@ namespace BlackJack.controller
         }
         public void CardReceived()
         {
-
             m_view.DisplayWelcomeMessage();
             m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
             m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());

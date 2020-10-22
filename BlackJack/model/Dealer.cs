@@ -1,6 +1,4 @@
-﻿
-
-using System.Linq;
+﻿using System.Linq;
 
 namespace BlackJack.model
 {
@@ -27,7 +25,7 @@ namespace BlackJack.model
                 m_deck = new Deck();
                 ClearHand();
                 a_player.ClearHand();
-                return m_newGameRule.NewGame(m_deck, this, a_player);
+                return m_newGameRule.NewGame(this, a_player);
             }
             return false;
         }
@@ -37,7 +35,6 @@ namespace BlackJack.model
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver(a_player))
             {
                 DealCard(a_player, true);
-
                 return true;
             }
             return false;
